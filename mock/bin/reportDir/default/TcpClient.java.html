@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TcpClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Coverage Report</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">TcpClient.java</span></div><h1>TcpClient.java</h1><pre class="source lang-java linenums">import java.net.*;
+import java.io.*;
+
+// 1. 本程式必須與 TcpServer.java 程式搭配執行，先執行 TcpServer 再執行本程式。
+// 2. 本程式必須有一個參數，指定伺服器的 IP。
+// 用法範例： java TcpClient
+
+class TcpClientParseCommunicate {
+    private Socket client;
+    private InputStream inputStream;
+    private StringBuffer buf;
+
+<span class="fc" id="L13">    public TcpClientParseCommunicate(Socket client) {</span>
+<span class="fc" id="L14">        this.client = client;</span>
+<span class="fc" id="L15">    }</span>
+
+    public StringBuffer getBuf() {
+<span class="nc" id="L18">        return buf;</span>
+    }
+
+    public void communicate() throws Exception {
+<span class="fc" id="L22">        this.inputStream = client.getInputStream(); // 取得輸入訊息的串流</span>
+<span class="fc" id="L23">    }</span>
+
+    public void parseInput() throws Exception {
+        try {
+<span class="nc" id="L27">            buf = new StringBuffer(); // 建立讀取字串。</span>
+            while (true) { // 不斷讀取。
+<span class="nc" id="L29">                int x = inputStream.read(); // 讀取一個 byte。(read 傳回 -1 代表串流結束)</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">                if (x == -1)</span>
+<span class="nc" id="L31">                    break; // x = -1 代表串流結束，讀取完畢，用 break 跳開。</span>
+<span class="nc" id="L32">                byte b = (byte) x; // 將 x 轉為 byte，放入變數 b.</span>
+<span class="nc" id="L33">                buf.append((char) b);// 假設傳送ASCII字元都是 ASCII。</span>
+<span class="nc" id="L34">            }</span>
+<span class="nc" id="L35">        } catch (Exception e) {</span>
+<span class="nc" id="L36">            inputStream.close(); // 關閉輸入串流。</span>
+<span class="nc" id="L37">        }</span>
+<span class="nc" id="L38">    }</span>
+
+}
+
+public class TcpClient {
+    private Socket client;
+    private TcpClientParseCommunicate tcpClientParseCommunicate;
+
+<span class="nc" id="L46">    public TcpClient(String ip, int port) throws Exception {</span>
+<span class="nc" id="L47">        client = new Socket(ip, port); // 連接至遠端機器</span>
+<span class="nc" id="L48">    }</span>
+
+    public void read() throws Exception {
+<span class="nc" id="L51">        tcpClientParseCommunicate = new TcpClientParseCommunicate(client);</span>
+<span class="nc" id="L52">        tcpClientParseCommunicate.communicate();</span>
+<span class="nc" id="L53">        tcpClientParseCommunicate.parseInput();</span>
+<span class="nc" id="L54">    }</span>
+
+    public void output() throws Exception {
+<span class="nc" id="L57">        StringBuffer buf = tcpClientParseCommunicate.getBuf();</span>
+<span class="nc" id="L58">        System.out.println(buf); // 印出接收到的訊息。</span>
+<span class="nc" id="L59">        client.close();</span>
+<span class="nc" id="L60">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

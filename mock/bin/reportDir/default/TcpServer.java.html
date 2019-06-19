@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TcpServer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Coverage Report</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">TcpServer.java</span></div><h1>TcpServer.java</h1><pre class="source lang-java linenums">import java.net.*;
+import java.io.*;
+
+// 1. 本程式必須與 TcpClient.java 程式搭配執行，先執行本程式再執行 TcpClient。
+// 2. 執行方法 : java TcpServer
+
+public class TcpServer {
+    private int port;
+
+<span class="nc" id="L10">    public TcpServer(int port) {</span>
+<span class="nc" id="L11">        this.port = port;</span>
+<span class="nc" id="L12">    }</span>
+
+    public void tcpServer() throws Exception {
+<span class="nc" id="L15">        ServerSocket ss = new ServerSocket(port); // 建立 TCP 伺服器。</span>
+        while (true) { // 不斷的接收處理輸入訊息。
+<span class="nc" id="L17">            Socket sc = ss.accept(); // 接收輸入訊息。</span>
+<span class="nc" id="L18">            OutputStream os = sc.getOutputStream(); // 取得輸出串流。</span>
+<span class="nc" id="L19">            os.write(&quot;From Server : Hi !&quot;.getBytes(&quot;UTF-8&quot;));// 送訊息到 Client 端。</span>
+<span class="nc" id="L20">            os.close(); // 關閉輸出串流。</span>
+<span class="nc" id="L21">            sc.close(); // 關閉 TCP 伺服器。</span>
+<span class="nc" id="L22">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

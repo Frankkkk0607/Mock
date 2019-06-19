@@ -1,0 +1,27 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+TcpClient	TcpClient.java	/^    public TcpClient(String ip, int port) throws Exception {$/;"	m	class:TcpClient
+TcpClient	TcpClient.java	/^public class TcpClient {$/;"	c
+TcpClientParseCommunicate	TcpClient.java	/^    public TcpClientParseCommunicate(Socket client) {$/;"	m	class:TcpClientParseCommunicate
+TcpClientParseCommunicate	TcpClient.java	/^class TcpClientParseCommunicate {$/;"	c
+TcpExample	TcpExample.java	/^public class TcpExample {$/;"	c
+TcpServer	TcpServer.java	/^    public TcpServer(int port) {$/;"	m	class:TcpServer
+TcpServer	TcpServer.java	/^public class TcpServer {$/;"	c
+buf	TcpClient.java	/^    private StringBuffer buf;$/;"	f	class:TcpClientParseCommunicate	file:
+client	TcpClient.java	/^    private Socket client;$/;"	f	class:TcpClient	file:
+client	TcpClient.java	/^    private Socket client;$/;"	f	class:TcpClientParseCommunicate	file:
+communicate	TcpClient.java	/^    public void communicate() throws Exception {$/;"	m	class:TcpClientParseCommunicate
+getBuf	TcpClient.java	/^    public StringBuffer getBuf() {$/;"	m	class:TcpClientParseCommunicate
+inputStream	TcpClient.java	/^    private InputStream inputStream;$/;"	f	class:TcpClientParseCommunicate	file:
+main	TcpExample.java	/^    public static void main(String args[]) throws Exception {$/;"	m	class:TcpExample
+output	TcpClient.java	/^    public void output() throws Exception {$/;"	m	class:TcpClient
+parseInput	TcpClient.java	/^    public void parseInput() throws Exception {$/;"	m	class:TcpClientParseCommunicate
+port	TcpExample.java	/^    public static int port = 6666; \/\/ 設定傳送埠為 6666。$/;"	f	class:TcpExample
+port	TcpServer.java	/^    private int port;$/;"	f	class:TcpServer	file:
+read	TcpClient.java	/^    public void read() throws Exception {$/;"	m	class:TcpClient
+tcpClientParseCommunicate	TcpClient.java	/^    private TcpClientParseCommunicate tcpClientParseCommunicate;$/;"	f	class:TcpClient	file:
+tcpServer	TcpServer.java	/^    public void tcpServer() throws Exception {$/;"	m	class:TcpServer
